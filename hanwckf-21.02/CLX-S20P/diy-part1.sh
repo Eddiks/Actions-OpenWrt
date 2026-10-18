@@ -19,3 +19,5 @@
 git clone https://github.com/sbwml/luci-app-openlist2 package/openlist2
 git clone https://github.com/EasyTier/luci-app-easytier package/easytier
 git clone https://github.com/destan19/OpenAppFilter package/OpenAppFilter
+git clone https://github.com/nondanee/UnblockNeteaseMusic package/UnblockNeteaseMusic
+git clone https://github.com/Openwrt-Passwall/openwrt-passwall2 package/passwall2
