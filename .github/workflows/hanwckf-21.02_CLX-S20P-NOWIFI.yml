@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 ###############手动修改##############
-name: hanwckf-21.02_CLX-S20P
+name: hanwckf-21.02_CLX-S20P-NOWIFI
 
 on:
   repository_dispatch:
@@ -71,7 +71,7 @@ env:
   REPO_URL: https://github.com/lgs2007m/immortalwrt-mt798x
   REPO_BRANCH: ${{ github.event.inputs.REPO_BRANCH || 'v7672' }}
   FEEDS_CONF: hanwckf-21.02/CLX-S20P/feeds.conf.default
-  CONFIG_FILE: hanwckf-21.02/CLX-S20P/.mtwifi-cfg.config
+  CONFIG_FILE: hanwckf-21.02/CLX-S20P/.nowifi-cfg.config
   DIY_P1_SH: hanwckf-21.02/CLX-S20P/diy-part1.sh
   DIY_P2_SH: hanwckf-21.02/CLX-S20P/diy-part2.sh
   SSH_ACTIONS: false
@@ -166,7 +166,7 @@ jobs:
         wifi_driver=$(echo "${{ github.event.inputs.WIFI_DRIVER }}" | awk -F'[-]' '{print $1}')
         firmware=$(echo "${{ github.event.inputs.WIFI_DRIVER }}" | awk -F'fw-' '{print $2}' | grep -oE '[0-9]{8}|default')
         echo "Use WiFi Driver: $wifi_driver-fw-$firmware"
-        version_num=$(echo "$wifi_driver" | sed 's/v//;s/\.//g')
+        version_num="NOWIFI"
         sed -i "s/^\(CONFIG_MTK_MT_WIFI_DRIVER_VERSION_\)[0-9]\{4\}/\1${version_num}/g" .config
         [ "$firmware" == "default" ] && firmware="DEFAULT_FIRMWARE"
         sed -i "s/^\(CONFIG_MTK_MT_WIFI_MT798[168]\)_[0-9]\{8\}=y/\1_${firmware}=y/g" .config
