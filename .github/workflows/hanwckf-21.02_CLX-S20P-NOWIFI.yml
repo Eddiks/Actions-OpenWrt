@@ -166,7 +166,7 @@ jobs:
         wifi_driver=$(echo "${{ github.event.inputs.WIFI_DRIVER }}" | awk -F'[-]' '{print $1}')
         firmware=$(echo "${{ github.event.inputs.WIFI_DRIVER }}" | awk -F'fw-' '{print $2}' | grep -oE '[0-9]{8}|default')
         echo "Use WiFi Driver: $wifi_driver-fw-$firmware"
-        version_num="NOWIFI"
+        version_num=$(echo "$wifi_driver" | sed 's/v//;s/\.//g')
         sed -i "s/^\(CONFIG_MTK_MT_WIFI_DRIVER_VERSION_\)[0-9]\{4\}/\1${version_num}/g" .config
         [ "$firmware" == "default" ] && firmware="DEFAULT_FIRMWARE"
         sed -i "s/^\(CONFIG_MTK_MT_WIFI_MT798[168]\)_[0-9]\{8\}=y/\1_${firmware}=y/g" .config
