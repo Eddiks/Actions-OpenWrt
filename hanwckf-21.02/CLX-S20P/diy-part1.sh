@@ -19,6 +19,5 @@
 git clone https://github.com/sbwml/luci-app-openlist2 package/openlist2
 git clone https://github.com/EasyTier/luci-app-easytier package/easytier
 git clone https://github.com/destan19/OpenAppFilter package/OpenAppFilter
-git clone https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic package/unblockneteasemusic
 # 添加 UnblockNeteaseMusic 插件源（如果尚未添加）
 echo 'src-git unblockneteasemusic https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic.git' >> feeds.conf.default
